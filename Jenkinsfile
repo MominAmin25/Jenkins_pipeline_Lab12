@@ -11,21 +11,21 @@ pipeline {
                 echo 'Testing...'
             }
         }
-        post {
-            always {
-                echo 'This will always run'
-            }
-            success {
-                echo 'Pipeline succeeded!'
-            }
-            failure {
-                echo 'Pipeline failed!'
-            }
-        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
             }
+        }
+    }
+    post {
+        always {
+            echo 'This will always run'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
