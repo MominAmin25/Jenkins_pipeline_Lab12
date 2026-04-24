@@ -7,8 +7,11 @@ pipeline {
             }
         }
         stage('Test') {
+            when {
+                branch 'main'
+            }
             steps {
-                echo 'Testing...'
+                echo 'Testing.. (only on main branch)'
             }
         }
         stage('Deploy') {
