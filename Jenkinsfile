@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: 'App version')
+        string(name: 'ENVIRONMENT', defaultValue: 'development', description: 'Target environment')
+        booleanParam(name: 'executetests', defaultValue: true, description: 'Run tests?')
+    }
     environment {
         APP_NAME = "MySecureApp"
         APP_VERSION = "1.0.0"
@@ -29,7 +34,9 @@ pipeline {
                 echo "Build number: ${env.BUILD_NUMBER}"
                 echo "Job name: ${env.JOB_NAME}"
                 echo "Branch: ${env.BRANCH_NAME}"
-                echo "Workspace: ${env.WORKSPACE}"
+                echo "Execute Tests: ${params.executetests}"
+                echo "Version: ${params.VERSION}"
+                echo "Environment: ${params.ENVIRONMENT}"
             }
         }
     }
